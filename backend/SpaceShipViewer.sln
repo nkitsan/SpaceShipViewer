@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpaceXService", "SpaceXService", "{6EFB1628-2AE8-4C94-B8D9-C164739E19EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1E4C3A9D-9B1B-4CBA-806F-7EA371C516CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipViewer.SpaceX.ApplicationCore", "SpaceXService\src\SpaceShipViewer.SpaceX.ApplicationCore\SpaceShipViewer.SpaceX.ApplicationCore.csproj", "{23D66E4E-7A89-403A-967B-2553EDE422CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipViewer.SpaceX.Infrastructure", "SpaceXService\src\SpaceShipViewer.SpaceX.Infrastructure\SpaceShipViewer.SpaceX.Infrastructure.csproj", "{624C169F-037F-41A7-99AF-B2644CA891C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipViewer.SpaceX.RestAPI", "SpaceXService\src\SpaceShipViewer.SpaceX.RestAPI\SpaceShipViewer.SpaceX.RestAPI.csproj", "{98E102D7-D75C-4D25-96FD-346C4FD19AC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipViewer.SpaceX.ApplicationCore.Test", "SpaceXService\test\SpaceShipViewer.SpaceX.ApplicationCore.Test\SpaceShipViewer.SpaceX.ApplicationCore.Test.csproj", "{6604DBDC-B139-4E00-9C37-E88B2B606D01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23D66E4E-7A89-403A-967B-2553EDE422CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D66E4E-7A89-403A-967B-2553EDE422CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D66E4E-7A89-403A-967B-2553EDE422CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D66E4E-7A89-403A-967B-2553EDE422CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624C169F-037F-41A7-99AF-B2644CA891C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624C169F-037F-41A7-99AF-B2644CA891C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624C169F-037F-41A7-99AF-B2644CA891C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624C169F-037F-41A7-99AF-B2644CA891C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E102D7-D75C-4D25-96FD-346C4FD19AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E102D7-D75C-4D25-96FD-346C4FD19AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E102D7-D75C-4D25-96FD-346C4FD19AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E102D7-D75C-4D25-96FD-346C4FD19AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6604DBDC-B139-4E00-9C37-E88B2B606D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6604DBDC-B139-4E00-9C37-E88B2B606D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6604DBDC-B139-4E00-9C37-E88B2B606D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6604DBDC-B139-4E00-9C37-E88B2B606D01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF} = {6EFB1628-2AE8-4C94-B8D9-C164739E19EC}
+		{1E4C3A9D-9B1B-4CBA-806F-7EA371C516CC} = {6EFB1628-2AE8-4C94-B8D9-C164739E19EC}
+		{23D66E4E-7A89-403A-967B-2553EDE422CC} = {A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF}
+		{624C169F-037F-41A7-99AF-B2644CA891C2} = {A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF}
+		{98E102D7-D75C-4D25-96FD-346C4FD19AC6} = {A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF}
+		{6604DBDC-B139-4E00-9C37-E88B2B606D01} = {1E4C3A9D-9B1B-4CBA-806F-7EA371C516CC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93C2914E-2E20-46E0-AC4E-A33E86298C68}
+	EndGlobalSection
+EndGlobal
