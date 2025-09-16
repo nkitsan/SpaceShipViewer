@@ -14,23 +14,26 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Repositories
             _spaceXDbContext = spaceXDbContext;
         }
 
-        public async Task Add(Launch launch)
+        public async Task Add(Launch launch, CancellationToken cancellationToken = default)
         {
-            await _spaceXDbContext.AddAsync(launch);
+            await _spaceXDbContext.AddAsync(launch, cancellationToken);
 
-            _spaceXDbContext.SaveChanges();
+            await _spaceXDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task AddRange(IEnumerable<Launch> launches)
+        public async Task AddRange(IEnumerable<Launch> launches, CancellationToken cancellationToken = default)
         {
-            await _spaceXDbContext.AddRangeAsync(launches);
+            await _spaceXDbContext.AddRangeAsync(launches, cancellationToken);
 
-            _spaceXDbContext.SaveChanges();
+            await _spaceXDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Launch>> FilterAsync(string? nameFilter = null, DateTime? launchedFromFilter = null)
+        public async Task<IEnumerable<Launch>> FilterAsync(
+            string? nameFilter = null,
+            DateTime? launchedFromFilter = null,
+            CancellationToken cancellationToken = default)
         {
-            var query = _spaceXDbContext.Launches.AsQueryable();
+            var query = _spaceXDbContext.Launches.AsNoTracking().AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(nameFilter))
             {
@@ -42,20 +45,22 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Repositories
                 query = query.Where(l => l.DateUTC > launchedFromFilter.Value);
             }
 
-            return await query.ToListAsync();
+            return await query.ToListAsync(cancellationToken);
         }
 
-        public async Task<Launch?> GetAsync(string id)
+        public async Task<Launch?> GetAsync(string id, CancellationToken cancellationToken = default)
         {
             return await _spaceXDbContext.Launches
-                .FirstOrDefaultAsync(launch => launch.Id == id);
+                .AsNoTracking()
+                .FirstOrDefaultAsync(launch => launch.Id == id, cancellationToken);
         }
 
-        public async Task<Launch?> GetLatest()
+        public async Task<Launch?> GetLatest(CancellationToken cancellationToken = default)
         {
             return await _spaceXDbContext.Launches
+                .AsNoTracking()
                 .OrderByDescending(launch => launch.DateUTC)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
         }
     }
 }

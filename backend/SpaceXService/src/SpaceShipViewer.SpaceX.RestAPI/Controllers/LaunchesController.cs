@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SpaceShipViewer.SpaceX.ApplicationCore.Contracts;
 using SpaceShipViewer.SpaceX.ApplicationCore.Entities;
+using SpaceShipViewer.SpaceX.RestAPI.DTOs;
 
 namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
 {
@@ -14,13 +15,13 @@ namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<Launch> GetLaunchById(string id)
+        public async Task<LaunchDetailsDTO> GetLaunchById(string id)
         {
             throw new NotImplementedException();
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Launch>> GetLaunchesByFilters()
+        public async Task<IEnumerable<LaunchDTO>> GetLaunchesByFilters()
         {
             throw new NotImplementedException();
         }
