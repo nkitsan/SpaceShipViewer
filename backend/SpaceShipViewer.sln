@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipViewer.SpaceX.Rest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipViewer.SpaceX.ApplicationCore.Test", "SpaceXService\test\SpaceShipViewer.SpaceX.ApplicationCore.Test\SpaceShipViewer.SpaceX.ApplicationCore.Test.csproj", "{6604DBDC-B139-4E00-9C37-E88B2B606D01}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipViewer.SpaceX.Workers", "SpaceXService\src\SpaceShipViewer.SpaceX.Workers\SpaceShipViewer.SpaceX.Workers.csproj", "{F1C642C6-5625-42E7-A5D2-6570C0EB94F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6604DBDC-B139-4E00-9C37-E88B2B606D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6604DBDC-B139-4E00-9C37-E88B2B606D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6604DBDC-B139-4E00-9C37-E88B2B606D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C642C6-5625-42E7-A5D2-6570C0EB94F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C642C6-5625-42E7-A5D2-6570C0EB94F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C642C6-5625-42E7-A5D2-6570C0EB94F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C642C6-5625-42E7-A5D2-6570C0EB94F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{624C169F-037F-41A7-99AF-B2644CA891C2} = {A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF}
 		{98E102D7-D75C-4D25-96FD-346C4FD19AC6} = {A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF}
 		{6604DBDC-B139-4E00-9C37-E88B2B606D01} = {1E4C3A9D-9B1B-4CBA-806F-7EA371C516CC}
+		{F1C642C6-5625-42E7-A5D2-6570C0EB94F7} = {A96A670D-9EDF-4AF4-B2D5-8B47D3B9ACAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93C2914E-2E20-46E0-AC4E-A33E86298C68}

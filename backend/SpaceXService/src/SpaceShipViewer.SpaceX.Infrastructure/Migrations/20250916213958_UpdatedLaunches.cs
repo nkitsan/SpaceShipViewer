@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SpaceShipViewer.SpaceX.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class UpdatedLaunches : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,10 +17,10 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Migrations
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    FlightNumber = table.Column<string>(type: "TEXT", nullable: false),
-                    DateUTC = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Success = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Details = table.Column<string>(type: "TEXT", nullable: false),
+                    FlightNumber = table.Column<uint>(type: "INTEGER", nullable: true),
+                    DateUTC = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    Success = table.Column<bool>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {

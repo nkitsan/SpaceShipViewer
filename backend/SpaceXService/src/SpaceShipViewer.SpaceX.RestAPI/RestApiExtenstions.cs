@@ -2,6 +2,9 @@
 using SpaceShipViewer.SpaceX.ApplicationCore.Contracts;
 using SpaceShipViewer.SpaceX.Infrastructure;
 using SpaceShipViewer.SpaceX.Infrastructure.Repositories;
+using SpaceShipViewer.SpaceX.RestAPI.Mappers;
+using SpaceShipViewer.SpaceX.Workers;
+using SpaceShipViewer.SpaceX.Workers.Configurations;
 
 namespace SpaceShipViewer.SpaceX.RestAPI
 {
@@ -21,6 +24,12 @@ namespace SpaceShipViewer.SpaceX.RestAPI
         {
             builder.Services.AddDbContext<SpaceXDbContext>(options =>
                 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddAutoMapper(typeof(RestApiProfile));
+
+            builder.Services.Configure<LaunchesWorkerConfiguration>(builder.Configuration.GetSection("LaunchesWorkerConfiguration"));
+
+            builder.Services.AddWorkerServices();
 
             builder.Services.AddScoped<ILaunchRepository, LaunchRepository>();
 

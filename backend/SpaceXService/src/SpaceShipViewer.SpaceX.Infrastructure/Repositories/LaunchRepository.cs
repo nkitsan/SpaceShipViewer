@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EFCore.BulkExtensions;
+using Microsoft.EntityFrameworkCore;
 using SpaceShipViewer.SpaceX.ApplicationCore.Contracts;
 using SpaceShipViewer.SpaceX.ApplicationCore.Entities;
 
@@ -14,16 +15,9 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Repositories
             _spaceXDbContext = spaceXDbContext;
         }
 
-        public async Task Add(Launch launch, CancellationToken cancellationToken = default)
+        public async Task AddOrUpdateRangeAsync(IEnumerable<Launch> launches, CancellationToken cancellationToken = default)
         {
-            await _spaceXDbContext.AddAsync(launch, cancellationToken);
-
-            await _spaceXDbContext.SaveChangesAsync(cancellationToken);
-        }
-
-        public async Task AddRange(IEnumerable<Launch> launches, CancellationToken cancellationToken = default)
-        {
-            await _spaceXDbContext.AddRangeAsync(launches, cancellationToken);
+            await _spaceXDbContext.BulkInsertOrUpdateAsync(launches);
 
             await _spaceXDbContext.SaveChangesAsync(cancellationToken);
         }
@@ -53,14 +47,6 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Repositories
             return await _spaceXDbContext.Launches
                 .AsNoTracking()
                 .FirstOrDefaultAsync(launch => launch.Id == id, cancellationToken);
-        }
-
-        public async Task<Launch?> GetLatest(CancellationToken cancellationToken = default)
-        {
-            return await _spaceXDbContext.Launches
-                .AsNoTracking()
-                .OrderByDescending(launch => launch.DateUTC)
-                .FirstOrDefaultAsync(cancellationToken);
         }
     }
 }

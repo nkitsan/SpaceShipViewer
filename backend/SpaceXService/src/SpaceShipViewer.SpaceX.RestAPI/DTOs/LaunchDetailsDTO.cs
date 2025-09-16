@@ -6,12 +6,12 @@
 
         public required string Name { get; set; }
 
-        public required string FlightNumber { get; set; }
+        public string Details { get; set; } = string.Empty;
 
-        public required DateTime DateUTC { get; set; }
+        public uint? FlightNumber { get; set; }
 
-        public string Description { get; set; } = string.Empty;
+        public DateTime? DateUTC { get; set; }
 
-        public bool Success { get; set; }
+        public bool? Success { get; set; }
     }
 }

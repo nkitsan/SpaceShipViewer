@@ -11,8 +11,8 @@ using SpaceShipViewer.SpaceX.Infrastructure;
 namespace SpaceShipViewer.SpaceX.Infrastructure.Migrations
 {
     [DbContext(typeof(SpaceXDbContext))]
-    [Migration("20250916173814_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250916213958_UpdatedLaunches")]
+    partial class UpdatedLaunches
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,22 +25,21 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateUTC")
+                    b.Property<DateTime?>("DateUTC")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Details")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FlightNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<uint?>("FlightNumber")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Success")
+                    b.Property<bool?>("Success")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

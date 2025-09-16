@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SpaceShipViewer.SpaceX.ApplicationCore.Entities
+﻿namespace SpaceShipViewer.SpaceX.ApplicationCore.Entities
 {
     public class Launch
     {
@@ -12,12 +6,12 @@ namespace SpaceShipViewer.SpaceX.ApplicationCore.Entities
 
         public required string Name { get; set; }
 
-        public required string FlightNumber { get; set; }
+        public required string Details { get; set; }
 
-        public required DateTime DateUTC { get; set; }
+        public uint? FlightNumber { get; set; }
 
-        public string Description { get; set; } = string.Empty;
+        public DateTime? DateUTC { get; set; }
 
-        public bool Success { get; set; }
+        public bool? Success { get; set; }
     }
 }
