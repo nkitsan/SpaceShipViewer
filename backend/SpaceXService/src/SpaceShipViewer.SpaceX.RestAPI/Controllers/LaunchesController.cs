@@ -34,9 +34,9 @@ namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetLaunchesByFilters(string? name, DateTime? lauchFromDate)
+        public async Task<IActionResult> GetLaunchesByFilters(string? name, DateTime? lauchFromDate, bool orderByDesc = false)
         {
-            var launches = await _mediator.Send(new GetLauchesQuery(name, lauchFromDate));
+            var launches = await _mediator.Send(new GetLauchesQuery(name, lauchFromDate, orderByDesc));
 
             return Ok(_mapper.Map<IEnumerable<LaunchDTO>>(launches));
         }

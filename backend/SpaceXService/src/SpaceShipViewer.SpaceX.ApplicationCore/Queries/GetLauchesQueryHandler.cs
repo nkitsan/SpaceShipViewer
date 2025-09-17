@@ -15,7 +15,11 @@ namespace SpaceShipViewer.SpaceX.ApplicationCore.Queries
 
         public async Task<IEnumerable<Launch>> Handle(GetLauchesQuery request, CancellationToken cancellationToken)
         {
-            return await _launchRepository.FilterAsync(request.Name, request.DateUTC, cancellationToken);
+            return await _launchRepository.FilterAsync(
+                request.Name,
+                request.DateUTC,
+                request.orderByDesc,
+                cancellationToken);
         }
     }
 }

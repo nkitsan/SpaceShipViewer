@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using SpaceShipViewer.SpaceX.ApplicationCore.Contracts;
 using SpaceShipViewer.SpaceX.ApplicationCore.Entities;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace SpaceShipViewer.SpaceX.Infrastructure.Repositories
 {
@@ -25,18 +27,31 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Repositories
         public async Task<IEnumerable<Launch>> FilterAsync(
             string? nameFilter = null,
             DateTime? launchedFromFilter = null,
+            bool orderByDesc = false,
             CancellationToken cancellationToken = default)
         {
             var query = _spaceXDbContext.Launches.AsNoTracking().AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(nameFilter))
             {
-                query = query.Where(l => l.Name.ToLower().Contains(nameFilter.ToLower()));
+                query = query.Where(launch => launch.Name.ToLower().Contains(nameFilter.ToLower()));
             }
 
             if (launchedFromFilter.HasValue)
             {
-                query = query.Where(l => l.DateUTC > launchedFromFilter.Value);
+                query = query.Where(launch => launch.DateUTC >= launchedFromFilter.Value);
+            }
+
+            Expression<Func<Launch, DateTime>> orderingExpression = 
+                (Launch launch) => launch.DateUTC.HasValue ? launch.DateUTC.Value : DateTime.Now;
+
+            if (orderByDesc)
+            {
+                query = query.OrderByDescending(orderingExpression);
+            }
+            else
+            {
+                query = query.OrderBy(orderingExpression);
             }
 
             return await query.ToListAsync(cancellationToken);
