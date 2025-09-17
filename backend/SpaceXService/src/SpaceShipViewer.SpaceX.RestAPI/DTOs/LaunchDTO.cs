@@ -1,6 +1,6 @@
 ﻿namespace SpaceShipViewer.SpaceX.RestAPI.DTOs
 {
-    public class LaunchDTO
+    public record LaunchDTO
     {
         public required string Id { get; set; }
 

@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SpaceShipViewer.SpaceX.ApplicationCore.Queries;
 using SpaceShipViewer.SpaceX.RestAPI.DTOs;
+using SpaceShipViewer.SpaceX.RestAPI.Parameters;
 
 namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
 {
@@ -34,9 +35,13 @@ namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetLaunchesByFilters(string? name, DateTime? lauchFromDate, bool orderByDesc = false)
+        public async Task<IActionResult> GetLaunchesByFilters([FromQuery]LaunchFilterParameters launchFilterParameters)
         {
-            var launches = await _mediator.Send(new GetLauchesQuery(name, lauchFromDate, orderByDesc));
+            var launches = await _mediator.Send(
+                new GetLauchesQuery(
+                    launchFilterParameters.Name,
+                    launchFilterParameters.LauchFromDate, 
+                    launchFilterParameters.OrderByDesc));
 
             return Ok(_mapper.Map<IEnumerable<LaunchDTO>>(launches));
         }

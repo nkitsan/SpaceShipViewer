@@ -1,6 +1,6 @@
 ﻿namespace SpaceShipViewer.SpaceX.ApplicationCore.Entities
 {
-    public class Launch
+    public record Launch
     {
         public required string Id { get; set; }
 
