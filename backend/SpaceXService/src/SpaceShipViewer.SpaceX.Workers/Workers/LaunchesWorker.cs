@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SpaceShipViewer.SpaceX.ApplicationCore.Contracts;
 using SpaceShipViewer.SpaceX.Workers.Configurations;
 using SpaceShipViewer.SpaceX.Workers.Services;
 
@@ -42,7 +41,7 @@ namespace SpaceShipViewer.SpaceX.Workers.Workers
                 {
                     break;
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     _logger.LogError(ex, ex.Message);
                 }

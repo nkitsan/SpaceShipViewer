@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SpaceShipViewer.SpaceX.ApplicationCore.Contracts;
-using SpaceShipViewer.SpaceX.ApplicationCore.Entities;
-using SpaceShipViewer.SpaceX.Infrastructure.Repositories;
+using SpaceShipViewer.SpaceX.ApplicationCore.Queries;
 using SpaceShipViewer.SpaceX.RestAPI.DTOs;
 
 namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
@@ -11,13 +10,12 @@ namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
     [ApiController]
     public class LaunchesController : ControllerBase
     {
-        private readonly ILaunchRepository _launchRepository;
+        private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
-        public LaunchesController(ILaunchRepository launchRepository,
-            IMapper mapper) 
+        public LaunchesController(IMediator mediator, IMapper mapper)
         {
-            _launchRepository = launchRepository;
+            _mediator = mediator;
             _mapper = mapper;
         }
 
@@ -25,7 +23,7 @@ namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetLaunchById(string id)
         {
-            var launch = await _launchRepository.GetAsync(id);
+            var launch = await _mediator.Send(new GetLaunchByIdQuery(id));
 
             if (launch is not null)
             {
@@ -36,9 +34,9 @@ namespace SpaceShipViewer.SpaceX.RestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetLaunchesByFilters()
+        public async Task<IActionResult> GetLaunchesByFilters(string? name, DateTime? lauchFromDate)
         {
-            var launches = await _launchRepository.FilterAsync();
+            var launches = await _mediator.Send(new GetLauchesQuery(name, lauchFromDate));
 
             return Ok(_mapper.Map<IEnumerable<LaunchDTO>>(launches));
         }

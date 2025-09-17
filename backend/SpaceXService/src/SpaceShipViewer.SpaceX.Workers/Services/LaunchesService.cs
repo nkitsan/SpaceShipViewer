@@ -19,8 +19,8 @@ namespace SpaceShipViewer.SpaceX.Workers.Services
         public LaunchesService(
             OddityCore oddityCore,
             ILaunchRepository launchRepository,
-            IMapper mapper) 
-        { 
+            IMapper mapper)
+        {
             _oddityCore = oddityCore;
             _launchRepository = launchRepository;
             _mapper = mapper;

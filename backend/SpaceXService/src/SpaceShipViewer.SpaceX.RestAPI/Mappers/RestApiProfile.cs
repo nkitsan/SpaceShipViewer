@@ -6,7 +6,7 @@ namespace SpaceShipViewer.SpaceX.RestAPI.Mappers
 {
     public class RestApiProfile : Profile
     {
-        public RestApiProfile() 
+        public RestApiProfile()
         {
             CreateMap<Launch, LaunchDTO>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

@@ -34,7 +34,7 @@ namespace SpaceShipViewer.SpaceX.Infrastructure.Repositories
                 query = query.Where(l => l.Name.ToLower().Contains(nameFilter.ToLower()));
             }
 
-            if (launchedFromFilter.HasValue) 
+            if (launchedFromFilter.HasValue)
             {
                 query = query.Where(l => l.DateUTC > launchedFromFilter.Value);
             }

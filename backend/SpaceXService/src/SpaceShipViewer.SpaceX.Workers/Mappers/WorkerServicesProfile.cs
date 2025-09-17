@@ -6,7 +6,7 @@ namespace SpaceShipViewer.SpaceX.Workers.Mappers
 {
     public class WorkerServicesProfile : Profile
     {
-        public WorkerServicesProfile() 
+        public WorkerServicesProfile()
         {
             CreateMap<LaunchInfo, Launch>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

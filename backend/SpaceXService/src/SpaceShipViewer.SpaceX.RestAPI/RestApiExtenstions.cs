@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SpaceShipViewer.SpaceX.ApplicationCore;
 using SpaceShipViewer.SpaceX.ApplicationCore.Contracts;
 using SpaceShipViewer.SpaceX.Infrastructure;
 using SpaceShipViewer.SpaceX.Infrastructure.Repositories;
@@ -30,6 +31,8 @@ namespace SpaceShipViewer.SpaceX.RestAPI
             builder.Services.Configure<LaunchesWorkerConfiguration>(builder.Configuration.GetSection("LaunchesWorkerConfiguration"));
 
             builder.Services.AddWorkerServices();
+
+            builder.Services.AddAplicationCoreServices();
 
             builder.Services.AddScoped<ILaunchRepository, LaunchRepository>();
 
